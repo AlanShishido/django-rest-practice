@@ -1,5 +1,6 @@
 from rest_framework import viewsets
 from ..models import Cadastro, Comentario
+from .serializers import CadastroSerializer
 
 class CadastroViewSet(viewsets.ModelViewSet):
     queryset = Cadastro.objects.all()
