@@ -5,3 +5,8 @@ class CadastroSerializer(serializers.ModelSerializer):
     class Meta:
         model = Cadastro
         fields = ('name', 'idade', 'email')
+
+class ComentarioSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Comentario
+        fields = ('email', 'avaliacao', 'comentario')

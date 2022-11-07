@@ -17,10 +17,11 @@ from django.contrib import admin
 from django.conf.urls import include
 from django.urls import path
 from rest_framework import routers
-from configurations.api.viewsets import CadastroViewSet
+from configurations.api.viewsets import CadastroViewSet, ComentarioViewSet
 
 router = routers.DefaultRouter()
 router.register(r'cadastro', CadastroViewSet)
+router.register(r'comentario', ComentarioViewSet, basename='Comentario')
 
 urlpatterns = [
     path('', include(router.urls)),
