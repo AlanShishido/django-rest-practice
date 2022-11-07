@@ -1,4 +1,6 @@
 from rest_framework import viewsets
+from rest_framework.decorators import action
+from rest_framework.response import Response
 from ..models import Cadastro, Comentario
 from .serializers import CadastroSerializer, ComentarioSerializer
 
@@ -23,7 +25,7 @@ class ComentarioViewSet(viewsets.ModelViewSet):
     # def create(self, request):
     #     pass
 
-    # GET METHOD WITH ID
+    # GET METHOD WITH Primary Key
     # def retrieve(self, request, pk=None):
     #     pass
 
@@ -39,3 +41,10 @@ class ComentarioViewSet(viewsets.ModelViewSet):
     # def destroy(self, request, pk=None):
     #     pass
 
+    @action(methods=['get'], detail=False)
+    def olamundo(self, request):
+        return Response({'message': 'Hello World'})
+    
+    @action(methods=['get'], detail=True)
+    def olamundocompk(self, request, pk=None):
+        return Response({'message': 'Hello World com Primary Key'})
