@@ -29,7 +29,7 @@ class ComentarioViewSet(viewsets.ModelViewSet):
     # def retrieve(self, request, pk=None):
     #     pass
 
-    # PUT METHOD
+    # PUT METHOD'
     # def update(self, request, pk=None):
     #     pass
 
