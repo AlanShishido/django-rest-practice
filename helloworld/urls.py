@@ -16,14 +16,24 @@ Including another URLconf
 from django.contrib import admin
 from django.conf.urls import include
 from django.urls import path
+from django.conf import settings
+from django.conf.urls.static import static
 from rest_framework import routers
 from configurations.api.viewsets import CadastroViewSet, ComentarioViewSet
 
 router = routers.DefaultRouter()
-router.register(r'cadastro', CadastroViewSet)
+router.register(r'cadastro', CadastroViewSet, basename='Cadastro')
 router.register(r'comentario', ComentarioViewSet, basename='Comentario')
 
 urlpatterns = [
     path('', include(router.urls)),
     path('admin/', admin.site.urls),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+# Serving static files during development
+# from django.conf import settings
+# from django.conf.urls.static import static
+
+# urlpatterns = [
+#     # ... the rest of your URLconf goes here ...
+# ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

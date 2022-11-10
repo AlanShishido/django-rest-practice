@@ -4,9 +4,10 @@ from ..models import Cadastro, Comentario
 class CadastroSerializer(serializers.ModelSerializer):
     class Meta:
         model = Cadastro
-        fields = ('name', 'idade', 'email')
+        fields = ('name', 'idade', 'email', 'perfil')
 
 class ComentarioSerializer(serializers.ModelSerializer):
     class Meta:
         model = Comentario
         fields = ('email', 'avaliacao', 'comentario')
+        

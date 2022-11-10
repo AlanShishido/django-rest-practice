@@ -5,6 +5,7 @@ class Cadastro(models.Model):
   name = models.CharField(max_length=64)
   idade = models.IntegerField()
   email = models.CharField(max_length=32, primary_key=True)
+  perfil = models.ImageField(upload_to='foto_perfil', null=True, blank=True)
 
   def __str__(self):
     return self.name
