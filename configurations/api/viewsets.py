@@ -1,6 +1,7 @@
-from rest_framework import viewsets
+from rest_framework import viewsets, filters
 from rest_framework.decorators import action
 from rest_framework.response import Response
+from django_filters.rest_framework import DjangoFilterBackend
 from ..models import Cadastro, Comentario
 from .serializers import CadastroSerializer, ComentarioSerializer
 
@@ -8,6 +9,8 @@ from .serializers import CadastroSerializer, ComentarioSerializer
 class CadastroViewSet(viewsets.ModelViewSet):
     # queryset = Cadastro.objects.all()
     serializer_class = CadastroSerializer
+    filter_backends = [filters.SearchFilter]
+    search_fields = ['name', 'idade', 'email']
     def get_queryset(self):
         print('get_queryset')
         ident = self.request.query_params.get('id', None)
@@ -35,6 +38,7 @@ class CadastroViewSet(viewsets.ModelViewSet):
 class ComentarioViewSet(viewsets.ModelViewSet):
     queryset = Comentario.objects.all()
     serializer_class = ComentarioSerializer
+    filter_backends = [DjangoFilterBackend]
     filterset_fields = ['email', 'avaliacao']
     
     # GET METHOD
